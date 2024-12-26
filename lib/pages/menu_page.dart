@@ -26,11 +26,11 @@ class _MenuPageState extends State<MenuPage> {
     IconLabelPair(Icons.info_outline, "О кафедре"),
     IconLabelPair(Icons.web, "Сайт ИиПИ"),
     IconLabelPair(Icons.list_alt, "Расписание"),
-    IconLabelPair(Icons.abc_sharp, "И ещё"),
+    IconLabelPair(Icons.location_on_rounded, "Карта"),
+    IconLabelPair(Icons.add_call, "Контакты"),
     IconLabelPair(Icons.add, "И ещё"),
     IconLabelPair(Icons.account_tree, "И ещё"),
     IconLabelPair(Icons.adb_sharp, "И ещё"),
-    IconLabelPair(Icons.add_call, "И ещё")
   ];
 
   @override

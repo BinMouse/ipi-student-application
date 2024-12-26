@@ -1,3 +1,4 @@
+/// Инстанс информации профиля
 class Profile {
   static Profile? _instance;
   static Profile get instance => _instance ??= Profile();
@@ -7,6 +8,7 @@ class Profile {
   String? groupName;
   String? groupNumber;
   String? phoneNumber;
+  String? emailAdress;
 
   Profile({
     this.photoUrl,
@@ -14,5 +16,6 @@ class Profile {
     this.groupName,
     this.groupNumber,
     this.phoneNumber,
+    this.emailAdress,
   });
 }
