@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:ipi_app/primitives/calendar_event.dart';
 
+
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
 
@@ -22,7 +23,7 @@ class _CalendarPageState extends State<CalendarPage> {
 
   final DateTime _lastDay =  DateTime.utc(2050);
 
-  final Radius _borderRadius = const Radius.circular(12);
+  // final Radius _borderRadius = const Radius.circular(12);
 
   String _month = '';
 
@@ -62,12 +63,16 @@ class _CalendarPageState extends State<CalendarPage> {
     _month = '${_months[DateTime.now().month - 1]}, ${DateTime.now().year}';
 
     // тестовая инициализация календарных событий
-    _events[DateTime.utc(2024,7,18)] = [
-      CalendarEvent('Пасхалочка', TimeOfDay(hour: 12, minute: 42)),
+
+    _events[DateTime.utc(2024,12,31)] = [
+      CalendarEvent('Предновоговогодняя суета', TimeOfDay(hour: 20, minute: 00)),
+      CalendarEvent('Новый Год по МСК', TimeOfDay(hour: 23, minute: 00)),
     ];
-    _events[DateTime.utc(2024,7,18)] = [
-      CalendarEvent('Пасхалочка', TimeOfDay(hour: 12, minute: 42)),
+
+    _events[DateTime.utc(2025,1,1)] = [
+      CalendarEvent('Новый Год', TimeOfDay(hour: 0, minute: 00)),
     ];
+
     _events[DateTime.utc(2024,7,10)] = [
       CalendarEvent('Начало работы над приложением', TimeOfDay(hour: 11, minute: 00)),
     ];
@@ -151,31 +156,38 @@ class _CalendarPageState extends State<CalendarPage> {
                     ),
 
                     calendarStyle: CalendarStyle(
+                      // Выбранный день
                       selectedDecoration: BoxDecoration(
                         color: Colors.blue,
-                        borderRadius: BorderRadius.all(_borderRadius),
+                        shape: BoxShape.circle, // Оставляем круг, убираем borderRadius
                       ),
+
+                      // Сегодняшний день
                       todayDecoration: BoxDecoration(
                         color: Colors.lightBlue[100],
-                        borderRadius: BorderRadius.all(_borderRadius),
+                        shape: BoxShape.circle, // Аналогично убираем borderRadius
                       ),
+
                       defaultTextStyle: const TextStyle(
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.w300,
                         fontSize: 20,
                       ),
+
                       todayTextStyle: const TextStyle(
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.w300,
                         fontSize: 20,
                         color: Colors.black,
                       ),
+
                       selectedTextStyle: const TextStyle(
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.w300,
                         fontSize: 20,
                         color: Colors.white,
                       ),
+
                       outsideTextStyle: const TextStyle(
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.w300,
@@ -183,12 +195,14 @@ class _CalendarPageState extends State<CalendarPage> {
                         fontSize: 20,
                         color: Colors.grey,
                       ),
+
                       holidayTextStyle: const TextStyle(
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.w300,
                         fontSize: 20,
                         color: Colors.redAccent,
                       ),
+
                       weekendTextStyle: TextStyle(
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.w300,
@@ -196,6 +210,7 @@ class _CalendarPageState extends State<CalendarPage> {
                         color: Colors.blue[700],
                       ),
                     ),
+
                   ),
                 ],
               ),
