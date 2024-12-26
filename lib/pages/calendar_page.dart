@@ -23,7 +23,7 @@ class _CalendarPageState extends State<CalendarPage> {
 
   final DateTime _lastDay =  DateTime.utc(2050);
 
-  final Radius _borderRadius = const Radius.circular(12);
+  // final Radius _borderRadius = const Radius.circular(12);
 
   String _month = '';
 
