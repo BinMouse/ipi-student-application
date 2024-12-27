@@ -4,12 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class IconLabelPair {
-  final IconData iconData;
-  final String label;
-
-  IconLabelPair (this.iconData, this.label);
-}
+import 'package:ipi_app/primitives/grid_menu_item.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -20,39 +15,54 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
 
-  List<IconLabelPair> _iconsList = [
-    IconLabelPair(Icons.info, "О приложении"),
-    IconLabelPair(Icons.people_alt, "Преподаватели"),
-    IconLabelPair(Icons.info_outline, "О кафедре"),
-    IconLabelPair(Icons.web, "Сайт ИиПИ"),
-    IconLabelPair(Icons.list_alt, "Расписание"),
-    IconLabelPair(Icons.location_on_rounded, "Карта"),
-    IconLabelPair(Icons.add_call, "Контакты"),
-    IconLabelPair(Icons.add, "И ещё"),
-    IconLabelPair(Icons.account_tree, "И ещё"),
-    IconLabelPair(Icons.adb_sharp, "И ещё"),
+  //region Переменные
+  List<GridMenuItem> itemsList = [
+    GridMenuItem(Icons.info, "О приложении", '/appinfo'),
+    GridMenuItem(Icons.people_alt, "Преподаватели",),
+    GridMenuItem(Icons.info_outline, "О кафедре",),
+    GridMenuItem(Icons.web, "Сайт ИиПИ",),
+    GridMenuItem(Icons.list_alt, "Расписание",),
+    GridMenuItem(Icons.location_on_rounded, "Карта",),
+    GridMenuItem(Icons.add_call, "Контакты",),
+    GridMenuItem(Icons.add, "Настройки",),
   ];
+  //endregion Переменные
 
   @override
   Widget build(BuildContext context) {
     return  GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-        itemCount: _iconsList.length,
+        itemCount: itemsList.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.all(4),
             child: ElevatedButton(
-              onPressed: (){},
+
+              // Переход к новому экрану
+              onPressed: (){
+                try {
+                  itemsList[index].goToRote(context);
+                }
+                catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Ошибка: Страница не найдена'),
+                      duration: Duration(seconds: 2),
+                      backgroundColor: Colors.blueGrey,
+                    ),
+                  );
+                }
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                       child: Center(
-                        child: Icon(_iconsList[index].iconData, size: 70, color: Colors.blue,),
+                        child: Icon(itemsList[index].iconData, size: 70, color: Colors.blue,),
                       ),
                   ),
   
-                  Text(_iconsList[index].label,
+                  Text(itemsList[index].label,
                     style: const TextStyle(
                       fontFamily: "Montserrat",
                       fontWeight: FontWeight.normal,
@@ -75,4 +85,10 @@ class _MenuPageState extends State<MenuPage> {
         }
     );
   }
+
+  //region Методы
+
+
+
+  //endregion Методы
 }

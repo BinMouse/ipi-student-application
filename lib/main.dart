@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ipi_app/pages/about_app_info.dart';
 
 import 'package:ipi_app/pages/login_page.dart';
 import 'package:ipi_app/pages/homescreen.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const LoginPage(),
         '/home' : (context) => const HomeScreen(),
+        '/appinfo' : (context) => const AboutAppInfo(),
       },
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
