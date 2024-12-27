@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
+
 import 'package:ipi_app/primitives/profile.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -106,6 +108,57 @@ class _ProfilePageState extends State<ProfilePage> {
                     _buildInfoRow(
                       Icons.numbers,
                       Profile.instance.groupNumber ?? 'Номер группы не указан',
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 12), // отступ
+
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.1),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+
+                padding: const EdgeInsets.all(16),
+
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Успеваемость',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 16), // отступ
+
+                    SizedBox(
+                      height: 250,
+                      child: PieChart(
+                        PieChartData(
+                          centerSpaceRadius: 60,
+                          sections: [
+                            PieChartSectionData(title: "5", value: 9, color: Colors.blue, radius: 55),
+                            PieChartSectionData(title: "4", value: 6, color: Colors.green, radius: 50),
+                            PieChartSectionData(title: "3", value: 3, color: Colors.yellow, radius: 45),
+                            PieChartSectionData(title: "2", value: 2, color: Colors.orange, radius: 40),
+                            PieChartSectionData(title: "1", value: 1, color: Colors.red, radius: 35),
+                          ],
+                          startDegreeOffset: 270
+                        ),
+                      ),
                     ),
                   ],
                 ),
