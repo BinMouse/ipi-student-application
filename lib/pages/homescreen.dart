@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     MenuPage(),
   ];
 
-  List<String> _pagesTitles = [
+  final List<String> _pagesTitles = [
     'Главная',
     'Календарь',
     'Профиль',

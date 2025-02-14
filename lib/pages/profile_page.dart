@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-
 import 'package:ipi_app/primitives/profile.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -39,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     child: CircleAvatar(
                       radius: 40,
-                      backgroundImage: NetworkImage(Profile.instance.photoUrl ?? ''),
+                      backgroundImage: NetworkImage(Profile.instance.photoUrl), ///todo: проверить на наличие
                       backgroundColor: Colors.grey[300],
                     ),
                   ),
@@ -52,7 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          Profile.instance.fullName ?? 'Имя не указано',
+                          Profile.instance.lastName + " " + Profile.instance.firstName + " " + Profile.instance.middleName,
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -60,10 +59,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
 
                         const SizedBox(height: 8),
-                        _buildInfoRow(Icons.phone, Profile.instance.phoneNumber ?? 'Телефон не указан'),
+                        _buildInfoRow(Icons.phone, Profile.instance.phoneNumber), ///todo: проверить на наличие
 
                         const SizedBox(height: 8),
-                        _buildInfoRow(Icons.mail, Profile.instance.emailAdress ?? 'Почта не указана'),
+                        _buildInfoRow(Icons.mail, Profile.instance.emailAdress),  ///todo: проверить на наличие
                       ],
                     ),
                   ),
@@ -102,12 +101,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(height: 16),
                     _buildInfoRow(
                       Icons.group,
-                      Profile.instance.groupName ?? 'Группа не указана',
+                      Profile.instance.major,
                     ),
                     const SizedBox(height: 12),
                     _buildInfoRow(
                       Icons.numbers,
-                      Profile.instance.groupNumber ?? 'Номер группы не указан',
+                      Profile.instance.groupCode,
                     ),
                   ],
                 ),

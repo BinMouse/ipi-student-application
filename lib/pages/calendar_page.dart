@@ -27,7 +27,7 @@ class _CalendarPageState extends State<CalendarPage> {
 
   String _month = '';
 
-  Map <DateTime, List<CalendarEvent>> _events = {};
+  final Map <DateTime, List<CalendarEvent>> _events = {};
 
   static const _months = [
     'Январь',

@@ -24,7 +24,7 @@ class _MenuPageState extends State<MenuPage> {
     GridMenuItem(Icons.list_alt, "Расписание",),
     GridMenuItem(Icons.location_on_rounded, "Карта",),
     GridMenuItem(Icons.add_call, "Контакты",),
-    GridMenuItem(Icons.add, "Настройки",),
+    GridMenuItem(Icons.settings, "Настройки",),
   ];
   //endregion Переменные
 
